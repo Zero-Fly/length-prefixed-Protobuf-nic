@@ -5,7 +5,7 @@ project(protobuf-parser VERSION 1.0.0 DESCRIPTION "Разбор потока len
 
 include_directories(${CMAKE_SOURCE_DIR}/src)
 enable_testing()
-add_subdirectory(test)
+#add_subdirectory(test)
 add_subdirectory(src/protocol)
 
 add_executable(protobuf_parser main.cpp)

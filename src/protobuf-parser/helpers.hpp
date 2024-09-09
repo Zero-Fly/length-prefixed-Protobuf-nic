@@ -5,6 +5,9 @@
  *      Author: sia
  */
 
+#include <memory>
+#include <vector>
+
 #ifndef SRC_PROTOBUF_PARSER_HELPERS_H_
 #define SRC_PROTOBUF_PARSER_HELPERS_H_
 

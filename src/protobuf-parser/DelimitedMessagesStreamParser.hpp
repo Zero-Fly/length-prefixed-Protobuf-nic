@@ -4,7 +4,9 @@
  *  Created on: 2 Feb 2023
  *      Author: sia
  */
-
+#include <memory>
+#include <vector>
+#include <list>
 #ifndef SRC_PROTOBUF_PARSER_DELIMITEDMESSAGESSTREAMPARSER_HPP_
 #define SRC_PROTOBUF_PARSER_DELIMITEDMESSAGESSTREAMPARSER_HPP_
 

@@ -1,8 +1,8 @@
 #include "src/protobuf-parser/DelimitedMessagesStreamParser.hpp"
 #include "src/protobuf-parser/helpers.hpp"
-
-typedef DelimitedMessagesStreamParser<TestTask::Messages::WrapperMessage> Parser;
+#include <iostream>
 
 int main(){
+    std::cout<<"Wake the fuck up, SAMURAI!"<<std::endl;
     return 0;
 }
