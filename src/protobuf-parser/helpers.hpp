@@ -7,7 +7,8 @@
 
 #include <memory>
 #include <vector>
-
+#include <google/protobuf/io/coded_stream.h>
+#include <google/protobuf/io/zero_copy_stream_impl_lite.h>
 #ifndef SRC_PROTOBUF_PARSER_HELPERS_H_
 #define SRC_PROTOBUF_PARSER_HELPERS_H_
 
@@ -41,7 +42,24 @@ template <typename Message> PointerToConstData serializeDelimited(const Message&
 template <typename Message>
 std::shared_ptr<Message> parseDelimited(const void* data, size_t size, size_t* bytesConsumed = 0)
 {
-    return nullptr;
+    google::protobuf::io::ArrayInputStream arrayInputStream(data, size);
+    google::protobuf::io::CodedInputStream codedInputStream(&arrayInputStream);
+    
+    uint32_t messageSize;
+    if (!codedInputStream.ReadVarint32(&messageSize)) {
+        return nullptr;
+    }
+    
+    auto limit = codedInputStream.PushLimit(messageSize);
+    Message message;
+    if(!message.ParseFromCodedStream(&codedInputStream)){
+        return nullptr;
+    }
+
+    codedInputStream.PopLimit(limit);
+    *bytesConsumed = codedInputStream.CurrentPosition();
+    
+    return std::make_shared<Message>(message);
 }
 
 
