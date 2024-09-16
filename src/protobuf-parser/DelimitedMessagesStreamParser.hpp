@@ -23,7 +23,7 @@ class DelimitedMessagesStreamParser
       size_t bytesConsumed = 0;
       while (!m_buffer.empty())
       {
-        std::shared_ptr<MessageType> parsedMassage = parseDelimited<MessageType>(data, m_buffer.size(), &bytesConsumed);
+        std::shared_ptr<MessageType> parsedMassage = parseDelimited<MessageType>(m_buffer.data(), m_buffer.size(), &bytesConsumed);
         if(parsedMassage){
           parsedMassages.push_back(parsedMassage);
           m_buffer.erase(m_buffer.begin(), m_buffer.begin() + bytesConsumed);

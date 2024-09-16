@@ -1,7 +1,6 @@
-#include <protobuf_parser/DelimitedMessagesStreamParser.hpp>
-#include <protobuf_parser/helpers.hpp>
-#include <protobuf/message.pb.h>
-
+#include <../src/protobuf-parser/DelimitedMessagesStreamParser.hpp>
+#include <../src/protobuf-parser/helpers.hpp>
+#include <../src/protocol/Messages.pb.h>
 #include <gtest/gtest.h>
 
 TEST(Parser, OneFastRequest)
